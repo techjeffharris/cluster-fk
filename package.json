@@ -1,0 +1,11 @@
+{
+    "name": "cluster-fuck", 
+    "description": "a simple, elegant cluster forker",
+    "version": "0.0.3",
+    "author": "Jeff Harris <techjeffharris@gmail.com> (http://www.intangiblehost.net)",
+    "repository": "https://github.com/techjeffharris/cluster-fuck.git",
+    "license": {
+        "type": "BSD",
+        "file": "LICENSE"
+    }
+}
