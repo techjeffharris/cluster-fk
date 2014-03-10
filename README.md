@@ -8,6 +8,7 @@ a simple, elegant cluster forker
 var ClusterFuck = require('cluster-fuck');
 var options = {
         exec: "worker.js",
+        args: [],
         silent: false,
         workers: 2
     };
