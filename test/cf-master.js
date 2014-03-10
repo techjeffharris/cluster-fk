@@ -1,7 +1,7 @@
 
-var ClusterFuck = require('cluster-fuck');
+var ClusterFuck = require('../index');
 var options = {
-        exec: "cf-worker.js",
+        exec: "./cf-worker.js",
         silent: false,
         workers: 2
     };
@@ -30,6 +30,14 @@ cluster.on('stopping', function onClusterStopping () {
 
 cluster.on('stopped', function onClusterStopped () {
     console.log('cluster stopped!');
+});
+
+cluster.on('killing', function onClusterKilling () {
+    console.log('killing cluster...');
+});
+
+cluster.on('killed', function onClusterKilled () {
+    console.log('cluster killed!');
 });
 
 cluster.start();
