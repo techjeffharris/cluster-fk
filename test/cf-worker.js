@@ -7,6 +7,8 @@ var server = http.createServer(function (req, res) {
     res.end('Hello World\n');
 });
 
+process.on('SIGINT', function () {});
+
 server.on('listening', function () {
 
     // the first of the two will take 2 seconds, and the second 4
@@ -14,7 +16,7 @@ server.on('listening', function () {
 
     setTimeout(function () {
 
-        console.log('Server %s running at http://127.0.0.1:1337/', cluster.worker.id);
+        console.log('Server %s running at http://127.0.0.1:1337', cluster.worker.id);
 
         process.send({
             memoryUsage: process.memoryUsage().heapTotal,

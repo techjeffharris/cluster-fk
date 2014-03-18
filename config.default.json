@@ -2,8 +2,7 @@
     "args": [],
     "exec": "worker.js",
     "repl": {
-        "address": "0.0.0.0",
-        "port": "1338"
+        "socket": "prepl.sock"
     },
     "silent": true,
     "workers": 1

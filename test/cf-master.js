@@ -1,7 +1,12 @@
 
-var ClusterFuck = require('../index');
-var options = {
+var ClusterFuck = require('../index'),
+    options = {
         exec: "./cf-worker.js",
+        repl: {
+        //     address: '0.0.0.0',
+        //     port: 1338,
+            socket: 'cluster-fuck.sock'
+        },
         silent: false,
         workers: 2
     };
