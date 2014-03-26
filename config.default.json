@@ -1,9 +1,0 @@
-{
-    "args": [],
-    "exec": "server.js",
-    "repl": {
-        "socket": "prepl.sock"
-    },
-    "silent": true,
-    "workers": 1
-}

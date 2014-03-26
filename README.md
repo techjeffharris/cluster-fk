@@ -1,64 +1,116 @@
 cluster-fuck
 ============
 
-a simple, elegant cluster forker
+A simple, elegant cluster forker
 
-# Use
 ```javascript
-var ClusterFuck = require('cluster-fuck');
-var options = {
+var ClusterFuck = require('cluster-fuck'),
+    cluster;
+    
+cluster = new ClusterFuck({
     exec: "mySpecialWorker.js",
     args: ['--my', '--arguments'],
     silent: false,
     workers: 8
-};
-
-var cluster = new ClusterFuck(options);
-
-cluster.on('ready', function onClusterReady () {
-    console.log('the cluster is now ready!');
-});
-
-cluster.on('starting', function onClusterStarting () {
-    console.log('starting cluster...');
-});
-
-cluster.on('restarting', function onClusterRestarting () {
-    console.log('restarting cluster...');
-});
-
-cluster.on('restarted', function onClusterRestarted () {
-    console.log('cluster restarted!');
-});
-
-cluster.on('stopping', function onClusterStopping () {
-    console.log('stopping cluster...');
-});
-
-cluster.on('stopped', function onClusterStopped () {
-    console.log('cluster stopped!');
-});
-
-cluster.on('killing', function onClusterKilling () {
-    console.log('killing cluster...');
-});
-
-cluster.on('killed', function onClusterKilled () {
-    console.log('cluster killed!');
 });
 
 cluster.start();
 ```
 
-# Configuration Defaults
+When workers are ready, they must send a `ready` signal and their memory useage:
+```javascript
+var server = http.createServer(function (req, res) {
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.end('Hello World\n');
+});
+
+server.on('listening', function () {
+    process.send({
+        memoryUsage: process.memoryUsage().heapTotal,
+        ready: true
+    });
+});
+
+server.listen(1337, '127.0.0.1');
+```
+
+# Configuration
 ```json
 {
     "args": [],
     "exec": "server.js",
-    "repl": {
-        "socket": "prepl.sock"
-    },
     "silent": true,
     "workers": 1
 }
+```
+
+* `args`: see [cluster#setupMaster](http://nodejs.org/api/cluster.html#cluster_cluster_setupmaster_settings)
+* `exec`: see [cluster#setupMaster](http://nodejs.org/api/cluster.html#cluster_cluster_setupmaster_settings)
+* `silent`: see [cluster#setupMaster](http://nodejs.org/api/cluster.html#cluster_cluster_setupmaster_settings)
+* `prepl`: see [prepl](https://github.com/techjeffharris/prepl) [configuration](https://github.com/techjeffharris/prepl#configuration)
+* `workers`: the number of workers to fork. Default: `1`
+
+# Events
+
+## Event: 'starting'
+Emitted before the cluster starts all workers
+```javascript
+cluster.on('starting', function () {
+    console.log('starting cluster...');
+});
+```
+
+## Event: 'ready'
+Emitted when all workers are ready
+```javascript
+cluster.on('ready', function () {
+    console.log('the cluster is now ready!');
+});
+```
+
+## Event: 'restarting'
+Emitted before the cluster restarts all workers
+```javascript
+cluster.on('restarting', function () {
+    console.log('restarting cluster...');
+});
+```
+
+## Event 'restarted'
+Emitted when all workers are ready after a restart
+```javascript
+cluster.on('restarted', function () {
+    console.log('cluster restarted!');
+});
+```
+
+## Event: 'stopping'
+Emitted before the cluster stops all workers
+```javascript
+cluster.on('stopping', function () {
+    console.log('stopping cluster...');
+});
+```
+
+## Event: 'stopped'
+Emitted when all workers have stopped
+```javascript
+cluster.on('stopped', function () {
+    console.log('cluster stopped!');
+});
+```
+
+## Event 'killing'
+Emitted before the cluster kills all workers
+```javascript
+cluster.on('killing', function () {
+    console.log('killing cluster...');
+});
+```
+## Event: 'killed'
+Emitted when all workers have been killed
+```javascript
+cluster.on('killed', function () {
+    console.log('cluster killed!');
+});
 ```
