@@ -7,11 +7,11 @@ a simple, elegant cluster forker
 ```javascript
 var ClusterFuck = require('cluster-fuck');
 var options = {
-        exec: "worker.js",
-        args: [],
-        silent: false,
-        workers: 2
-    };
+    exec: "mySpecialWorker.js",
+    args: ['--my', '--arguments'],
+    silent: false,
+    workers: 8
+};
 
 var cluster = new ClusterFuck(options);
 
@@ -48,4 +48,17 @@ cluster.on('killed', function onClusterKilled () {
 });
 
 cluster.start();
+```
+
+# Configuration Defaults
+```json
+{
+    "args": [],
+    "exec": "server.js",
+    "repl": {
+        "socket": "prepl.sock"
+    },
+    "silent": true,
+    "workers": 1
+}
 ```

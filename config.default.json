@@ -1,6 +1,6 @@
 {
     "args": [],
-    "exec": "worker.js",
+    "exec": "server.js",
     "repl": {
         "socket": "prepl.sock"
     },
