@@ -80,7 +80,7 @@ cluster.start();
 Used to stop all workers and shutdown the cluster:
 
 ```javascript
-cluster.stop(function () {
+cluster.shutdown(function () {
     console.log('cluster stopped!');
 })
 ```
