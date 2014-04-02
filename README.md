@@ -1,22 +1,22 @@
 cluster-fuck
 ============
 
-A simple, elegant cluster forker with TCP-based [REPL](https://github.com/techjeffharris/prepl).
+A simple, elegant cluster forker with TCP [REPL](https://github.com/techjeffharris/prepl).
 
 ## Usage
 
 ```javascript
 var ClusterFuck = require('cluster-fuck'),
-    cluster;
+    myCluster;
     
-cluster = new ClusterFuck({
+myCluster = new ClusterFuck({
     exec: "mySpecialWorker.js",
     args: ['--my', '--arguments'],
     silent: false,
     workers: 8
 });
 
-cluster.start();
+myCluster.start();
 ```
 
 When workers are ready, they must send a `ready` signal and their memory usage:
