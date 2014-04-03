@@ -1,7 +1,7 @@
 cluster-fuck
 ============
 
-A simple, elegant cluster forker with TCP [REPL](https://github.com/techjeffharris/prepl).
+A simple, elegant cluster forker with TCP REPL server via [prepl](https://github.com/techjeffharris/prepl).
 
 ## Usage
 
