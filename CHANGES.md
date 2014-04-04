@@ -2,6 +2,9 @@ CHANGELOG
 =========
 
 ## v1.1
+### v1.1.2
+* 
+
 ### v1.1.1
 * `function totalMemory` is now `ClusterFuck.memoryUsage`
 * `ClusterFuck.memoryUsage` optionally takes a unit for formatting ('B', 'KB', etc.)
