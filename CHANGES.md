@@ -3,6 +3,7 @@ CHANGELOG
 
 ## v1.1
 ### v1.1.2
+* updated `LICENSE` to BSD license rather than MIT to accurately reflect package.json
 * 
 
 ### v1.1.1
