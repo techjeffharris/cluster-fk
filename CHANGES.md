@@ -2,6 +2,10 @@ CHANGELOG
 =========
 
 ## v1.1
+### v1.1.3
+* `clusterFuck.shutdown` now properly shuts down the cluster
+* fixed issue where repl clients received limited list of event notifications.
+
 ### v1.1.2
 * updated `LICENSE` to BSD license rather than MIT to accurately reflect package.json
 * 

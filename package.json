@@ -1,7 +1,7 @@
 {
     "name": "cluster-fuck", 
     "description": "a simple, elegant cluster forker",
-    "version": "1.1.2",
+    "version": "1.1.3",
     "author": "Jeff Harris <techjeffharris@gmail.com> (http://www.intangiblehost.net)",
     "repository": "https://github.com/techjeffharris/cluster-fuck.git",
     "license": {
@@ -10,6 +10,7 @@
     },
     "dependencies": {
         "prepl": "*",
-        "techjeffharris-utils": "*"
+        "techjeffharris-utils": "*",
+        "usage": "*"
     }
 }
